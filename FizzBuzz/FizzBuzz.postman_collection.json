@@ -1,0 +1,41 @@
+{
+	"info": {
+		"_postman_id": "061e6121-de7f-4dcf-9dbd-adfa126fa7fa",
+		"name": "FizzBuzz",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://bj1ae75rll.execute-api.us-east-2.amazonaws.com/Prod/fizzbuzz",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[1,3,5,\"\",15,\"A\",23]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://bj1ae75rll.execute-api.us-east-2.amazonaws.com/Prod/fizzbuzz",
+					"protocol": "https",
+					"host": [
+						"bj1ae75rll",
+						"execute-api",
+						"us-east-2",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"Prod",
+						"fizzbuzz"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

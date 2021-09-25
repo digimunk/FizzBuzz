@@ -1,0 +1,36 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: FizzBuzz
+Globals:
+  Function:
+    Timeout: 3
+Resources:
+  FizzBuzzFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: FizzBuzzFunction
+      Handler: app.lambdaHandler
+      Runtime: nodejs14.x
+      Events:
+        FizzBuzz:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: post
+Outputs:
+  FizzBuzzApi:
+    Description: API Gateway endpoint URL for Prod stage for FizzBuzzfunction
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/
+  FizzBuzzFunction:
+    Description: FizzBuzzLambda Function ARN
+    Value:
+      Fn::GetAtt:
+      - FizzBuzzFunction
+      - Arn
+  FizzBuzzFunctionIamRole:
+    Description: Implicit IAM Role created for FizzBuzzfunction
+    Value:
+      Fn::GetAtt:
+      - FizzBuzzFunctionRole
+      - Arn

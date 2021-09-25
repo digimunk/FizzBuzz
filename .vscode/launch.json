@@ -1,0 +1,54 @@
+{
+    "configurations": [
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "FizzBuzz:FizzBuzzFunction (nodejs14.x)",
+            "invokeTarget": {
+                "target": "template",
+                "templatePath": "${workspaceFolder}/FizzBuzz/template.yaml",
+                "logicalId": "FizzBuzzFunction"
+            },
+            "lambda": {
+                "payload": {},
+                "environmentVariables": {},
+                "runtime": "nodejs14.x"
+            }
+        },
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "API FizzBuzz:FizzBuzzFunction (nodejs14.x)",
+            "invokeTarget": {
+                "target": "api",
+                "templatePath": "${workspaceFolder}/FizzBuzz/template.yaml",
+                "logicalId": "FizzBuzzFunction"
+            },
+            "api": {
+                "path": "/{proxy+}",
+                "httpMethod": "post",
+                "payload": {
+                    "json": {}
+                }
+            },
+            "lambda": {
+                "runtime": "nodejs14.x"
+            }
+        },
+        {
+            "type": "node",
+            "name": "vscode-jest-tests",
+            "request": "launch",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "disableOptimisticBPs": true,
+            "program": "${workspaceFolder}\\jest",
+            "cwd": "${workspaceFolder}",
+            "args": [
+                "test\\unit",
+                "--runInBand",
+                "--watchAll=false"
+            ]
+        }
+    ]
+}
